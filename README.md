@@ -60,6 +60,12 @@ En el sector de las empresas de mudanzas, la eficiencia en la gestión de las ve
 5. Pruebas exhaustivas del sistema para garantizar su funcionamiento correcto.
 
 ### Análisis de los procesos
+<p float="center">
+  <img src="res/image.jpg" width="250" />
+  <img src="res/image.jpg" width="250" /> 
+  <img src="res/image.jpg" width="250" />
+  <img src="res/image.jpg" width="250" />
+</p>
 En el sector de lal sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionale
 ### Diseño de la arquitectura
 En el sector de lal sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionalel sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionale

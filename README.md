@@ -23,15 +23,14 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#introduction">Introduction</a></li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#methodology">Methodology</a>
+        <ul>
+            <li><a href="#análisis-de-los-procesos">Análisis de los procesos</a></li>
+            <li><a href="#diseño-de-la-arquitectura">Diseño de la arquitectura</a></li>
+        </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#kk">KK</a></li>
   </ol>
 </details>
 
@@ -45,7 +44,29 @@ El presente proyecto tiene como objetivo principal el desarrollo de un sistema d
 ## Introduction
 En el sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionales y poco automatizados, lo que puede resultar en retrasos, errores y una experiencia insatisfactoria para los clientes. Con el objetivo de superar estas limitaciones, se plantea el desarrollo de un sistema de gestión que permita agilizar las ventas y optimizar los procesos internos de una empresa de mudanzas.
 
+<!-- OBJECTIVES -->
+## Objectives
+* Diseñar e implementar un sistema de gestión que facilite el registro y seguimiento de los clientes, así como el control de las ventas.
+* Desarrollar una interfaz intuitiva y fácil de usar que permita a los empleados gestionar eficientemente la información relacionada con las mudanzas y los clientes.
+* Facilitar el proceso de facturación de los servicios ofrecidos.
+* Brindar una experiencia satisfactoria a los clientes, ofreciendo un proceso de ventas ágil, transparente y personalizado.
 
+<!-- METHODOLOGY -->
+## Methodology
+1. Análisis de los procesos de ventas y operativos de la empresa de mudanzas para identificar las áreas de mejora y los requerimientos del sistema.
+2. Diseño de la arquitectura del sistema y de la base de datos, considerando las necesidades específicas de la empresa.
+3. Desarrollo de las funcionalidades del sistema, como la gestión de clientes, cotizaciones, seguimiento de ventas, asignación de recursos y planificación de las operaciones.
+4. Implementación de la interfaz de usuario, asegurando su usabilidad e intuitividad.
+5. Pruebas exhaustivas del sistema para garantizar su funcionamiento correcto.
+
+### Análisis de los procesos
+En el sector de lal sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionale
+### Diseño de la arquitectura
+En el sector de lal sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionalel sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionale
+
+
+<!-- KK -->
+## KK
 
 
 Here's why:

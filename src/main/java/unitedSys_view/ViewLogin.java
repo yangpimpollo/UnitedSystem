@@ -17,7 +17,7 @@ import java.awt.event.*;
 import unitedSys_view.ViewWindow;
 import unitedSys_controller.Controller_01;
 
-public class ViewLogin extends JFrame implements ActionListener{
+public class ViewLogin extends JFrame implements ActionListener, KeyListener{
     
     private JLabel logo_lbl, test_lbl, user_lbl, pass_lbl;
     private JTextField user_field;
@@ -61,6 +61,7 @@ public class ViewLogin extends JFrame implements ActionListener{
         pass_lbl.setBounds(60,330,360,40);
         pass_lbl.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 12));
         pass_lbl.setForeground(new Color( 90, 90, 90));
+        pass_lbl.addKeyListener(this);
         add(pass_lbl);
         
         user_field = new JTextField();
@@ -75,18 +76,35 @@ public class ViewLogin extends JFrame implements ActionListener{
         signin_btn.setBounds(40, 420, 360,40);
         signin_btn.addActionListener(this);
         add(signin_btn);
+        
+        addKeyListener(this);
     }
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == signin_btn){
+            //JOptionPane.showMessageDialog(this, "please try again!","sing in error", JOptionPane.ERROR_MESSAGE);
             System.out.println("aaa" + pass_field.getText());
             contro01.accessAccount(user_field.getText(), pass_field.getText());
             
             if(contro01.getUser()!=null){
                 window.setVisible(true);
                 dispose();
+            }else{
+               JOptionPane.showMessageDialog(this, "please try again!","sing in error", JOptionPane.ERROR_MESSAGE);
             }
             
+        }
+    }
+
+    @Override public void keyTyped(KeyEvent e) {  }
+    @Override public void keyPressed(KeyEvent e) { }
+    @Override 
+    public void keyReleased(KeyEvent e) {
+    
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Acción al presionar Enter
+            System.out.println("enter" );
+            //signin_btn.doClick();
         }
     }
 }

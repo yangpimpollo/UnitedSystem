@@ -28,7 +28,7 @@ public class Controller_01 {
         
         Service_01 service = new Service_01();
         userDO = service.accessValidation(user_arg, pass_arg);
-        if(userDO==null){ throw  new RuntimeException("Datos incorrectos."); }
+        //if(userDO==null){ throw  new RuntimeException("Datos incorrectos."); }
     }
     
 }

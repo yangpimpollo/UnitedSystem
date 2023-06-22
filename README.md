@@ -1,5 +1,5 @@
 <div>
-    <img src="logo.png" alt="Example Image" width="100" style="float:left;padding-right:30px;"/>
+    <img src="res/logo.png" alt="Example Image" width="100" style="float:left;padding-right:30px;"/>
     UNIVERCIDAD NACIONAL DE INGENIERÍA
     
     FACULTAD DE INGENIERÍA ECONÓMICA ESTADÍSTICA Y CIENCIAS SOCIALES    

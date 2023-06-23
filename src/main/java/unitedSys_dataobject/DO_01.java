@@ -14,6 +14,7 @@ package unitedSys_dataobject;
 
 
 public class DO_01 {
+
     private String user;
     private String pass;
     public DO_01(){};
@@ -21,4 +22,6 @@ public class DO_01 {
     public String getPass(){ return pass; };
     public void setUser(String arg){ this.user= arg; };
     public void setPass(String arg){ this.pass= arg; };
+    
+
 }

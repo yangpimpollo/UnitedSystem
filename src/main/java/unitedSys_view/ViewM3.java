@@ -14,6 +14,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+
 public class ViewM3 extends JFrame implements ActionListener {
 
     public ViewM3(){
@@ -28,6 +32,11 @@ public class ViewM3 extends JFrame implements ActionListener {
         getContentPane().setBackground(new Color( 255, 255, 255));
         ImageIcon favicon = new ImageIcon("res/white.png");
         setIconImage(favicon.getImage());
+        createComponents1();
+    }
+    
+    private void createComponents1(){
+        
     }
         
     @Override

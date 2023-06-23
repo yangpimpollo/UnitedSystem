@@ -112,13 +112,67 @@ public class ViewM2 extends JFrame implements ActionListener {
         clear.setBounds(400, 320, 80,25);
         clear.addActionListener(this);
         add(clear);
-        save = new JButton("clear");
+        save = new JButton("save");
         save.setBounds(490, 320, 80,25);
         save.addActionListener(this);
         add(save);
     }
     
+    private boolean dataValidate(){
+        boolean validate=false;
+        int doclength = tf2.getText().length();
+        
+        if(doclength == 0){
+            JOptionPane.showMessageDialog(this, "doc ID es obligatorio","error", JOptionPane.ERROR_MESSAGE);
+        }else if(tf3.getText().length()== 0){
+            JOptionPane.showMessageDialog(this, "business name es obligatorio","error", JOptionPane.ERROR_MESSAGE);
+        }else if(tf8.getText().length()== 0){
+            JOptionPane.showMessageDialog(this, "phone es obligatorio","error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            switch(cb1.getSelectedIndex()){
+            case 0:{
+                if(doclength==11){
+                    validate=true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "RUC incorrecto","RUC error", JOptionPane.ERROR_MESSAGE);
+                }
+            }break;
+            case 1:{
+                if(doclength==8){
+                    validate=true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "DNI incorrecto","DNI error", JOptionPane.ERROR_MESSAGE);
+                }
+            }break;
+            case 2, 3:{
+                if(doclength==12){
+                    validate=true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "DOC incorrecto","DNI error", JOptionPane.ERROR_MESSAGE);
+                }
+            }break;
+            }
+        }
+        
+        
+        return validate;
+    } 
+    
     public void actionPerformed(ActionEvent e) {
-         
+        if(e.getSource() == save){
+            if(dataValidate()){
+                dispose();
+            }
+        }
+        if(e.getSource() == clear){
+            cb1.setSelectedIndex(0);
+            tf2.setText("");
+            tf3.setText("");
+            tf4.setText("");
+            tf5.setText("");
+            tf6.setText("");
+            tf7.setText("");
+            tf8.setText("");
+        }
     }
 }

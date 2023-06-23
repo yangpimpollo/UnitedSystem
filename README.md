@@ -75,14 +75,14 @@ En el sector de las empresas de mudanzas, la eficiencia en la gestión de las ve
 
 #### tools
 <p float="center">
-  <img src="res/ll1.png" width="50" />
-  <img src="res/ll2.png" width="50" /> 
+  <img src="res/ll6.png" width="50" />
+  <img src="res/ll8.png" width="50" /> 
   <img src="res/ll3.png" width="50" />
   <img src="res/ll4.png" width="50" /> 
-  <img src="res/ll5.png" width="50" />
-  <img src="res/ll6.png" width="50" /> 
-  <img src="res/ll7.png" width="50" /> 
-  <img src="res/ll8.png" width="50" />
+  <img src="res/ll7.png" width="50" />
+  <img src="res/ll5.png" width="50" /> 
+  <img src="res/ll1.png" width="50" /> 
+  <img src="res/ll2.png" width="50" />
   <img src="res/ll9.png" width="50" /> 
 </p>
 

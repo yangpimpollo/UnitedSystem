@@ -69,10 +69,8 @@ En el sector de las empresas de mudanzas, la eficiencia en la gestión de las ve
 
 ### Diseño de la arquitectura
 <p float="center">
-  <img src="res/ppt1.JPG" width="450" />
-  <img src="res/ppt2.JPG" width="450" /> 
-  <img src="res/ppt3.JPG" width="450" />
-  <img src="res/ppt4.JPG" width="450" />
+  <img src="res/ppt5.JPG" width="400" />
+  <img src="res/ppt6.JPG" width="400" /> 
 </p>
 En el sector de lal sector de las empresas de mudanzas, la eficiencia en la gestión de las ventas y en la planificación de las operaciones es fundamental para garantizar el éxito del negocio. Sin embargo, muchas empresas aún utilizan métodos tradicionale
 ### Diseño de la arquitectura

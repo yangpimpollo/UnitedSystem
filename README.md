@@ -73,7 +73,7 @@ En el sector de las empresas de mudanzas, la eficiencia en la gestión de las ve
   <img src="res/ppt6.JPG" width="400" /> 
 </p>
 
-#### tools
+#### tools for development
 <p float="center">
   <img src="res/ll6.png" width="50" />
   <img src="res/ll8.png" width="50" /> 

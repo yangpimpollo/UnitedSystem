@@ -21,10 +21,22 @@ public class Controller_02 {
     public Controller_02(){
     }
     
-    public void newCustomer(String user_arg, String pass_arg){
+    public boolean newCustomer(String[] arg){
+        
+        customer = new DO_02();
+                
+        customer.setDoctype(arg[0]);
+        customer.setDocId(arg[1]);
+        customer.setBussname(arg[2]);
+        customer.setFirstName(arg[3]);
+        customer.setLastName(arg[4]);
+        customer.setAddress(arg[5]);
+        customer.setEmail(arg[6]);
+        customer.setPhone(arg[7]);
+        
         
         Service_02 service = new Service_02();
-        customer = service.accessValidation(user_arg, pass_arg);
-        //if(userDO==null){ throw  new RuntimeException("Datos incorrectos."); }
+
+        return service.addCustomer(customer);
     }
 }

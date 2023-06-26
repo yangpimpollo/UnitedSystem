@@ -8,7 +8,7 @@ CREATE TABLE [Services](
 )
 GO
 
-CREATE TABLE [Order Details](
+CREATE TABLE [OrderDetails](
   unit_price money,
   quantity int,
   discount float,
@@ -35,12 +35,12 @@ GO
 CREATE TABLE [Accounts](
   [Employee_employee_id] int NOT NULL, 
   user_name varchar(20) NOT NULL,
-  pass binary NOT NULL
+  pass varbinary(64) NOT NULL
 )
 GO
 
 CREATE TABLE [Customers](
-  customer_id int IDENTITY(1000,1) NOT NULL PRIMARY KEY,
+  customer_id int NOT NULL PRIMARY KEY,
   [DocType_doc_type] varchar(10) NOT NULL,
   business_name varchar(40),
   first_name varchar(20),
@@ -64,8 +64,8 @@ CREATE TABLE [Inventory](
 )
 GO
 
-ALTER TABLE [Order Details]
-  ADD CONSTRAINT [Order Details_Orders_order_id_fkey]
+ALTER TABLE [OrderDetails]
+  ADD CONSTRAINT [OrderDetails_Orders_order_id_fkey]
     FOREIGN KEY ([Orders_order_id]) REFERENCES [Orders] (order_id)
 GO
 
@@ -94,7 +94,7 @@ ALTER TABLE [Inventory]
     FOREIGN KEY ([Orders_order_id]) REFERENCES [Orders] (order_id)
 GO
 
-ALTER TABLE [Order Details]
-  ADD CONSTRAINT [Order Details_Services_service_id_fkey]
+ALTER TABLE [OrderDetails]
+  ADD CONSTRAINT [OrderDetails_Services_service_id_fkey]
     FOREIGN KEY ([Services_service_id]) REFERENCES [Services] (service_id)
 GO

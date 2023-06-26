@@ -13,6 +13,7 @@ package unitedSys_view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import unitedSys_controller.Controller_02;
 
 public class ViewM2 extends JFrame implements ActionListener {
     
@@ -20,6 +21,7 @@ public class ViewM2 extends JFrame implements ActionListener {
     private JComboBox cb1;
     private JTextField tf2, tf3, tf4, tf5, tf6, tf7, tf8;
     private JButton clear, save;
+    private Controller_02 contro02 = new Controller_02();
     
     public ViewM2(){
         setLayout(null);
@@ -158,21 +160,42 @@ public class ViewM2 extends JFrame implements ActionListener {
         return validate;
     } 
     
+    private void clear(){
+        cb1.setSelectedIndex(0);
+        tf2.setText("");
+        tf3.setText("");
+        tf4.setText("");
+        tf5.setText("");
+        tf6.setText("");
+        tf7.setText("");
+        tf8.setText("");
+    }
+    
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == save){
+            String[] arg = {
+                cb1.getSelectedItem().toString(),
+                tf2.getText(),
+                tf3.getText(),
+                tf4.getText(),
+                tf5.getText(),
+                tf6.getText(),
+                tf7.getText(),
+                tf8.getText()
+            };
+                    
             if(dataValidate()){
-                dispose();
+                if(contro02.newCustomer(arg)){
+                    JOptionPane.showMessageDialog(this, "successful!","add customer", JOptionPane.INFORMATION_MESSAGE);
+                    clear();
+                    dispose();  
+                }else{
+                    JOptionPane.showMessageDialog(this, "please try again!","add customer error", JOptionPane.ERROR_MESSAGE);
+                }             
             }
         }
         if(e.getSource() == clear){
-            cb1.setSelectedIndex(0);
-            tf2.setText("");
-            tf3.setText("");
-            tf4.setText("");
-            tf5.setText("");
-            tf6.setText("");
-            tf7.setText("");
-            tf8.setText("");
+            clear();
         }
     }
 }

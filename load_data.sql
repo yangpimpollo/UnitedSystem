@@ -155,6 +155,12 @@ VALUES (12345678,'DNI', 'fulano de la torre', 'de la torre', 'fulano', 'Tierra',
 ALTER TABLE Customers DROP CONSTRAINT PK__Customer__CD65CB858606C682;
 ALTER TABLE Customers ALTER COLUMN customer_id bigint NOT NULL ADD PRIMARY KEY (customer_id);
 
+------------------------------------------------------------------------------------------------------------
+SELECT * FROM Orders;
+INSERT INTO Orders (Employee_employee_id, Customers_customer_id, date) VALUES (800, 89756412, '2008-11-11');
+INSERT INTO Orders (Employee_employee_id, Customers_customer_id, date) VALUES (800, 89756412, '2013-11-27');
+
+
 SELECT CONSTRAINT_NAME
 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
 WHERE TABLE_NAME = 'Customers' AND COLUMN_NAME = 'customer_id' AND CONSTRAINT_NAME LIKE 'PK%'

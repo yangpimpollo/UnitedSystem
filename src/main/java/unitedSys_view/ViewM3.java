@@ -28,17 +28,21 @@ import unitedSys_tools.DateLabelFormatter;
 import unitedSys_view.ViewWindow;
 
 import unitedSys_controller.Controller_03;
+import unitedSys_controller.Controller_04;
 
 public class ViewM3 extends JFrame implements ActionListener {
 
+    private int seccionID;
     private JLabel lb1, lb2, lb3, lb4;
     private JTextField tf2, tf3, tf4;
     private JButton search, newC, clear, save;
     private ViewWindow viewWin;
     private JDatePickerImpl datePicker;
     private Controller_03 contro03 = new Controller_03();
+    private Controller_04 contro04 = new Controller_04();
     
     public void setSeccion(int arg0, String arg1){ 
+        this.seccionID = arg0;
         tf4.setText(arg1);
     }
              
@@ -107,6 +111,18 @@ public class ViewM3 extends JFrame implements ActionListener {
         datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         datePicker.setBounds(200, 60, 200, 27);
         add(datePicker);
+        //----------------------------------------------------------------
+        
+        Calendar calendar = Calendar.getInstance();
+            //calendar.set(2023, Calendar.JULY, 1);
+            datePicker.getModel().setDate(calendar.get(java.util.Calendar.YEAR),
+                               calendar.get(Calendar.MONTH),
+                               calendar.get(Calendar.DAY_OF_MONTH));
+
+            // Update the view to reflect the new date
+            datePicker.getModel().setSelected(true);
+        
+        //----------------------------------------------------------------
         
         search = new JButton("search");
         search.setBounds(410, 100, 80,25);
@@ -141,13 +157,38 @@ public class ViewM3 extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "enter customer id!","error", JOptionPane.ERROR_MESSAGE);
             }
             
-            //Date selectedDate = (Date) datePicker.getModel().getValue();
-            //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");    //"MM/dd/yyyy HH:mm:ss"
-            //System.out.println("date"+df.format(selectedDate) );
+            
         }
         if(e.getSource() == newC){
             viewWin.setVisibleM2();
             viewWin.getVM2().setTF2_ID(tf2.getText());
+        }
+        
+        if(e.getSource() == clear){
+            tf2.setText("");
+            tf3.setText("");
+            Calendar calendar = Calendar.getInstance();
+            //calendar.set(2023, Calendar.JULY, 1);
+            datePicker.getModel().setDate(calendar.get(java.util.Calendar.YEAR),
+                               calendar.get(Calendar.MONTH),
+                               calendar.get(Calendar.DAY_OF_MONTH));
+
+            // Update the view to reflect the new date
+            datePicker.getModel().setSelected(true);
+        }
+        
+        if(e.getSource() == save){
+            Date selectedDate = (Date) datePicker.getModel().getValue();
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");    //"MM/dd/yyyy HH:mm:ss"
+            System.out.println("date"+df.format(selectedDate) );
+            
+            if(contro04.newOrder(Integer.toString(seccionID),tf2.getText(),df.format(selectedDate))){                  
+                JOptionPane.showMessageDialog(this, "successful!","add Order", JOptionPane.INFORMATION_MESSAGE);
+                //clear();
+                dispose();  
+            }else{
+                JOptionPane.showMessageDialog(this, "please try again!","add Order error", JOptionPane.ERROR_MESSAGE);
+            }  
         }
     }
     

@@ -13,6 +13,8 @@ package unitedSys_view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import java.util.*;
@@ -25,12 +27,20 @@ import org.jdatepicker.util.*;
 import unitedSys_tools.DateLabelFormatter;
 import unitedSys_view.ViewWindow;
 
+import unitedSys_controller.Controller_03;
+
 public class ViewM3 extends JFrame implements ActionListener {
 
     private JLabel lb1, lb2, lb3, lb4;
     private JTextField tf2, tf3, tf4;
     private JButton search, newC, clear, save;
     private ViewWindow viewWin;
+    private JDatePickerImpl datePicker;
+    private Controller_03 contro03 = new Controller_03();
+    
+    public void setSeccion(int arg0, String arg1){ 
+        tf4.setText(arg1);
+    }
              
     public ViewM3(ViewWindow arg) {
         this.viewWin = arg;
@@ -70,11 +80,12 @@ public class ViewM3 extends JFrame implements ActionListener {
         lb4.setForeground(new Color( 90, 90, 90));
         add(lb4);
         
-        tf2 = new JTextField();
+        tf2 = new JTextField("");
         tf2.setBounds(200, 100, 200,25);
         add(tf2);
         tf3 = new JTextField();
         tf3.setBounds(200, 140, 200,25);
+        tf3.setEditable(false);
         add(tf3);
         tf4 = new JTextField();
         tf4.setText(viewWin.getSeccionNamet());
@@ -93,7 +104,7 @@ public class ViewM3 extends JFrame implements ActionListener {
         p.put("text.year", "Year");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         // Don't know about the formatter, but there it is...
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         datePicker.setBounds(200, 60, 200, 27);
         add(datePicker);
         
@@ -117,8 +128,26 @@ public class ViewM3 extends JFrame implements ActionListener {
         
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == search){
+            if(tf2.getText().length()>7){
+                if(contro03.searchCustomer(tf2.getText())!=null){
+                    tf3.setText(contro03.searchCustomer(tf2.getText()));
+                }else{
+                    tf3.setText("not found");
+                }
+                
+            }else{
+                System.out.println("******7777" );
+                JOptionPane.showMessageDialog(this, "enter customer id!","error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            //Date selectedDate = (Date) datePicker.getModel().getValue();
+            //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");    //"MM/dd/yyyy HH:mm:ss"
+            //System.out.println("date"+df.format(selectedDate) );
+        }
         if(e.getSource() == newC){
             viewWin.setVisibleM2();
+            viewWin.getVM2().setTF2_ID(tf2.getText());
         }
     }
     

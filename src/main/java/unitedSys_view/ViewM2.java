@@ -23,6 +23,8 @@ public class ViewM2 extends JFrame implements ActionListener {
     private JButton clear, save;
     private Controller_02 contro02 = new Controller_02();
     
+    public void setTF2_ID(String arg){ tf2.setText(arg); };
+    
     public ViewM2(){
         setLayout(null);
         //setDefaultCloseOperation(JFrame.);
@@ -185,7 +187,11 @@ public class ViewM2 extends JFrame implements ActionListener {
             };
                     
             if(dataValidate()){
+//                for (int i = 0; i < arg.length; i++) {
+//                    System.out.println(arg[i]);
+//                }
                 if(contro02.newCustomer(arg)){
+                    
                     JOptionPane.showMessageDialog(this, "successful!","add customer", JOptionPane.INFORMATION_MESSAGE);
                     clear();
                     dispose();  

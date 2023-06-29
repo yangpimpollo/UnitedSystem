@@ -147,12 +147,13 @@ EXEC addCustomer
 ------------------------------------------------------
 
 SELECT * FROM Customers;
+SELECT * FROM Customers WHERE customer_id=425689
 DELETE FROM Customers;
 INSERT INTO Customers(customer_id,DocType_doc_type, business_name, first_name, last_name, address, email, phone) 
 VALUES (12345678,'DNI', 'fulano de la torre', 'de la torre', 'fulano', 'Tierra', 'fulano@fulano.com', '987654321');
 
 ALTER TABLE Customers DROP CONSTRAINT PK__Customer__CD65CB858606C682;
-ALTER TABLE Customers ALTER COLUMN customer_id int NOT NULL, ADD PRIMARY KEY (customer_id);
+ALTER TABLE Customers ALTER COLUMN customer_id bigint NOT NULL ADD PRIMARY KEY (customer_id);
 
 SELECT CONSTRAINT_NAME
 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE

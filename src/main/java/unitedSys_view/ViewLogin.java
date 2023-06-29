@@ -87,8 +87,7 @@ public class ViewLogin extends JFrame implements ActionListener, KeyListener{
             
             if(contro01.getUser()!=null){
                 window.setVisible(true);
-                window.setSeccionID(contro01.getUser().getId());
-                window.setSeccionName(contro01.getUser().getName());
+                window.setSeccion(contro01.getUser().getId(),contro01.getUser().getName());
                 System.out.println("---" +contro01.getUser().getId() );
                 System.out.println("---" +contro01.getUser().getName() );
                 dispose();

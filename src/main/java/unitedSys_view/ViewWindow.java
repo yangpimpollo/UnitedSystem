@@ -28,8 +28,12 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
     private int seccionID;
     private String seccionNamet;
     public String getSeccionNamet() { return seccionNamet; };
-    public void setSeccionID(int arg){ this.seccionID=arg; };
-    public void setSeccionName(String arg){ this.seccionNamet=arg; seccionName.setText(seccionNamet); };
+    public void setSeccion(int arg0, String arg1){ 
+        this.seccionID=arg0;
+        this.seccionNamet=arg1; 
+        seccionName.setText(seccionNamet);
+        vm3.setSeccion(arg0, arg1);
+    };
     
     private JMenuBar mb;
     private JMenu m1,m2,m3,m4,m5,m6;
@@ -43,6 +47,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
     private ViewM6 vm6 = new ViewM6();
     
     public void setVisibleM2(){ vm2.setVisible(true); };
+    public ViewM2 getVM2(){ return vm2; };
     
     public ViewWindow(){
         setLayout(null);

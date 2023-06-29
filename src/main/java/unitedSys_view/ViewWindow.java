@@ -25,15 +25,24 @@ import unitedSys_view.ViewM6;
 
 public class ViewWindow  extends JFrame implements ActionListener,  MouseListener {
     
+    private int seccionID;
+    private String seccionNamet;
+    public String getSeccionNamet() { return seccionNamet; };
+    public void setSeccionID(int arg){ this.seccionID=arg; };
+    public void setSeccionName(String arg){ this.seccionNamet=arg; seccionName.setText(seccionNamet); };
+    
     private JMenuBar mb;
     private JMenu m1,m2,m3,m4,m5,m6;
     private JMenuItem mm2;
+    private JLabel seccionName;
     private ViewM1 vm1 = new ViewM1();
     private ViewM2 vm2 = new ViewM2();
-    private ViewM3 vm3 = new ViewM3();
+    private ViewM3 vm3 = new ViewM3(this);
     private ViewM4 vm4 = new ViewM4();
     private ViewM5 vm5 = new ViewM5();
     private ViewM6 vm6 = new ViewM6();
+    
+    public void setVisibleM2(){ vm2.setVisible(true); };
     
     public ViewWindow(){
         setLayout(null);
@@ -77,6 +86,13 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         
         //mb.addActionListener(this);
         setJMenuBar(mb);
+        
+        seccionName = new JLabel();
+        seccionName.setText(seccionNamet);
+        seccionName.setBounds(700,10,360,40);
+        seccionName.setFont(new Font("Arial Black", Font.BOLD, 23));
+        seccionName.setForeground(new Color( 0, 90, 171));
+        add(seccionName);
     }
     
     public void actionPerformed(ActionEvent e) {

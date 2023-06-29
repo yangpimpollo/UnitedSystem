@@ -82,16 +82,19 @@ public class ViewLogin extends JFrame implements ActionListener, KeyListener{
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == signin_btn){
-            //JOptionPane.showMessageDialog(this, "please try again!","sing in error", JOptionPane.ERROR_MESSAGE);
             System.out.println("aaa" + pass_field.getText());
-            //contro01.accessAccount(user_field.getText(), pass_field.getText());
+            contro01.accessAccount(user_field.getText(), pass_field.getText());
             
-            //if(contro01.getUser()!=null){
+            if(contro01.getUser()!=null){
                 window.setVisible(true);
+                window.setSeccionID(contro01.getUser().getId());
+                window.setSeccionName(contro01.getUser().getName());
+                System.out.println("---" +contro01.getUser().getId() );
+                System.out.println("---" +contro01.getUser().getName() );
                 dispose();
-            //}else{
-               //JOptionPane.showMessageDialog(this, "please try again!","sing in error", JOptionPane.ERROR_MESSAGE);
-            //}
+            }else{
+               JOptionPane.showMessageDialog(this, "please try again!","sing in error", JOptionPane.ERROR_MESSAGE);
+            }
             
         }
     }

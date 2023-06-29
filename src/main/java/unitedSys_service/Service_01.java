@@ -32,8 +32,12 @@ public class Service_01 {
             if(resultSet.next()){
                 System.out.println("esec");
                 userDO = new DO_01();
+                userDO.setID(Integer.parseInt(resultSet.getString("Employee_employee_id")));
                 userDO.setUser(resultSet.getString("user_name"));
                 userDO.setPass(resultSet.getString("pass"));
+                userDO.setName(resultSet.getString("employee_name"));
+                
+                
             }
             
             

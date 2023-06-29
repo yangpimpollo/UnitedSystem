@@ -6,6 +6,7 @@ USE unitedvanlines_SampleDB
 SELECT employee_name FROM Employee WHERE employee_id = 800;
 
 SELECT * FROM Employee;
+UPDATE Employee SET employee_name='fulano de tal' WHERE employee_id='800'
 
 INSERT INTO Employee (employee_name, job) VALUES ('fulano', 'boss');
 INSERT INTO Employee (employee_name, job) VALUES ('fulano1', 'ceo');
@@ -87,7 +88,26 @@ EXEC singinAccount
 go;
 
 EXEC singinAccount @_user_name = 'fulano', @_pass = '1234'
+EXEC singinAccount @_user_name = '', @_pass = ''
 go;
+
+SELECT A.* , E.employee_name
+FROM Accounts As A, Employee as E
+WHERE user_name = @_user_name AND pass = HASHBYTES('SHA2_512', @_pass) AND A.Employee_employee_id = E.employee_id
+
+SELECT A.* , E.employee_name
+FROM Accounts As A, Employee as E
+WHERE user_name = 'fulano' AND pass = HASHBYTES('SHA2_512', '1234') AND A.Employee_employee_id = E.employee_id
+GO;
+
+ALTER PROCEDURE singinAccount
+    @_user_name VARCHAR(20), 
+	@_pass VARCHAR(20)
+AS
+	SELECT A.* , E.employee_name
+	FROM Accounts As A, Employee as E
+	WHERE user_name = @_user_name AND pass = HASHBYTES('SHA2_512', @_pass) AND A.Employee_employee_id = E.employee_id
+GO;
 
 
 EXEC addAccount

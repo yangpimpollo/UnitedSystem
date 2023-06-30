@@ -73,6 +73,11 @@ EXEC addAccount
           @_pass = '1234'
 go;
 
+EXEC addAccount
+          @_id = 810,
+          @_user_name = 'UNI_tapia',
+          @_pass = '123'
+
 ------------------------------------------------------
 
 CREATE PROCEDURE singinAccount

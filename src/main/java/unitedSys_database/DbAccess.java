@@ -4,6 +4,7 @@ UNIVERSIDAD NACIONAL DE INGENIERÍA
 INGENIERÍA ESTADÍSTICA
 
 @author yangpimpollo [LIN CHIU CHEN YANG - 20200403F]
+https://github.com/yangpimpollo/UnitedSystem
 
 clase para crear la conección con la base de datos
 retornando el objeto Connection

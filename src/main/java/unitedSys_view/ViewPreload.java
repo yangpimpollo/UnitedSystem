@@ -4,6 +4,7 @@ UNIVERSIDAD NACIONAL DE INGENIERÍA
 INGENIERÍA ESTADÍSTICA
 
 @author yangpimpollo [LIN CHIU CHEN YANG - 20200403F]
+https://github.com/yangpimpollo/UnitedSystem
 
 clase de precarga del sistema
 
@@ -45,14 +46,14 @@ public class ViewPreload extends JFrame implements Runnable{
     }
     private void update(){
         if(x<=500){
-            x+=50;        // x=100;
+            x+=2;        // x=100;
             y=x/5;
             repaint();
 
             m = (y<=45)? 20 : 255;
             pausa(20);
         }else{
-            pausa(30);   // 3000
+            pausa(3000);   // 3000
             x = -50;
             System.out.println("de nuevo");
             login.setVisible(true);

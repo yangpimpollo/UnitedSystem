@@ -37,6 +37,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         welcom1.setText("Hello " + seccionNamet);
     };
     
+    private JButton exit;
     private JMenuBar mb;
     private JMenu m1,m2,m3,m4,m5,m6;
     private JMenuItem mm2;
@@ -102,6 +103,16 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         m6 = new JMenu("factura");
         m6.addMouseListener(this);
         mb.add(m6);
+        
+        ImageIcon icon = new ImageIcon("res/exit.png");
+        
+        exit = new JButton();
+        exit.setIcon(icon);
+        exit.setBorderPainted(false);
+        exit.setBackground(Color.WHITE);
+        exit.setBounds(840, 10, 25,25);
+        exit.addActionListener(this);
+        add(exit);
         
         //mb.addActionListener(this);
         setJMenuBar(mb);

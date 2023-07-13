@@ -74,6 +74,9 @@ public class ViewLogin extends JFrame implements ActionListener, KeyListener{
         add(pass_field);
         
         signin_btn = new JButton("SIGN IN");
+        signin_btn.setBackground(new Color(2, 101, 250));
+        signin_btn.setForeground(Color.WHITE);
+        signin_btn.setBorderPainted(false);
         signin_btn.setBounds(40, 420, 360,40);
         signin_btn.addActionListener(this);
         add(signin_btn);

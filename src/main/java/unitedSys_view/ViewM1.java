@@ -61,6 +61,9 @@ public class ViewM1 extends JFrame implements ActionListener {
         add(searchField);
         
         searchButton = new JButton("search");
+        searchButton.setBackground(new Color(2, 101, 250));
+        searchButton.setForeground(Color.WHITE);
+        searchButton.setBorderPainted(false);
         searchButton.setBounds(212, 30, 80,20);
         searchButton.addActionListener(this);
         add(searchButton);

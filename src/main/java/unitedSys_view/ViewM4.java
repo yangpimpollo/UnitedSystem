@@ -87,10 +87,16 @@ public class ViewM4 extends JFrame implements ActionListener {
         
         
         clear = new JButton("clear");
+        clear.setBackground(new Color(2, 101, 250));
+        clear.setForeground(Color.WHITE);
+        clear.setBorderPainted(false);
         clear.setBounds(400, 320, 80,25);
         clear.addActionListener(this);
         add(clear);
         save = new JButton("add Item");
+        save.setBackground(new Color(2, 101, 250));
+        save.setForeground(Color.WHITE);
+        save.setBorderPainted(false);
         save.setBounds(485, 320, 90,25);
         save.addActionListener(this);
         add(save);
@@ -102,6 +108,9 @@ public class ViewM4 extends JFrame implements ActionListener {
         add(lb1);
         
         search = new JButton("search");
+        search.setBackground(new Color(2, 101, 250));
+        search.setForeground(Color.WHITE);
+        search.setBorderPainted(false);
         search.setBounds(230, 20, 80,27);
         search.addActionListener(this);
         add(search);

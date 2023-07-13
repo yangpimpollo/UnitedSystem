@@ -126,18 +126,30 @@ public class ViewM3 extends JFrame implements ActionListener {
         //----------------------------------------------------------------
         
         search = new JButton("search");
+        search.setBackground(new Color(2, 101, 250));
+        search.setForeground(Color.WHITE);
+        search.setBorderPainted(false);
         search.setBounds(410, 100, 80,25);
         search.addActionListener(this);
         add(search);
         newC = new JButton("new");
+        newC.setBackground(new Color(2, 101, 250));
+        newC.setForeground(Color.WHITE);
+        newC.setBorderPainted(false);
         newC.setBounds(410, 140, 80,25);
         newC.addActionListener(this);
         add(newC);
         clear = new JButton("clear");
+        clear.setBackground(new Color(2, 101, 250));
+        clear.setForeground(Color.WHITE);
+        clear.setBorderPainted(false);
         clear.setBounds(400, 320, 80,25);
         clear.addActionListener(this);
         add(clear);
         save = new JButton("save");
+        save.setBackground(new Color(2, 101, 250));
+        save.setForeground(Color.WHITE);
+        save.setBorderPainted(false);
         save.setBounds(490, 320, 80,25);
         save.addActionListener(this);
         add(save);

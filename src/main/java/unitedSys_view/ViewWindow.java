@@ -37,6 +37,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         welcom1.setText("Hello " + seccionNamet);
     };
     
+    //private ViewLogin login2 = new ViewLogin();
     private JButton exit;
     private JMenuBar mb;
     private JMenu m1,m2,m3,m4,m5,m6;
@@ -110,7 +111,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         exit.setIcon(icon);
         exit.setBorderPainted(false);
         exit.setBackground(Color.WHITE);
-        exit.setBounds(840, 10, 25,25);
+        exit.setBounds(840, 10, 24,24);
         exit.addActionListener(this);
         add(exit);
         
@@ -174,6 +175,11 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mm2){
              System.out.println("registro" );
+        }
+        
+        if(e.getSource() == exit){
+             dispose();
+             //login2.setVisible(true);
         }
     }
 

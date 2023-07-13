@@ -148,6 +148,7 @@ public class ViewM3 extends JFrame implements ActionListener {
         if(e.getSource() == search){
             if(tf2.getText().length()>7){
                 if(contro03.searchCustomer(tf2.getText())!=null){
+                    System.out.println("[[[[[ tf2.getText()" + tf2.getText());
                     tf3.setText(contro03.searchCustomer(tf2.getText()));
                 }else{
                     tf3.setText("not found");

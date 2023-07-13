@@ -24,9 +24,13 @@ public class Service_03 {
     public String searchCustomerService(String id_arg){
         
         try (Connection cn = DbAccess.getConnection()) {
-            String sql = "SELECT * FROM Customers WHERE customer_id=" + id_arg;
-            Statement statement = cn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            String sql = "SELECT * FROM Customers WHERE customer_id=?";
+            //Statement statement = cn.createStatement();
+            PreparedStatement statement = cn.prepareStatement(sql);
+            statement.setString(1, id_arg);
+
+            ResultSet resultSet = statement.executeQuery();
+            
 
             if(resultSet.next()){
                 return resultSet.getString("business_name");                 

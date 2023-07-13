@@ -16,19 +16,26 @@ package unitedSys_view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
+import unitedSys_service.Service_08;
 import unitedSys_service.Service_06;
 import unitedSys_tools.DateLabelFormatter;
 
@@ -40,6 +47,7 @@ public class ViewM5 extends JFrame implements ActionListener {
     private JDatePickerImpl datePicker;
     private JTable resultTable;
     private DefaultTableModel tableModel;
+    Service_08 service8 = new Service_08();
     Service_06 service = new Service_06();
     
     public ViewM5(){
@@ -126,6 +134,22 @@ public class ViewM5 extends JFrame implements ActionListener {
             tableModel.setRowCount(0);
             lb1.setText("00000000");
         }
+        
+        if(e.getSource() == save){
+            try {
+                if(service8.generateReport(orderName)){
+                    
+                    JOptionPane.showMessageDialog(this, "successful!","download report", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                    openfile();
+                }else{
+                    JOptionPane.showMessageDialog(this, "please try again!","download report error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ViewM5.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     private void createTable() {
@@ -161,6 +185,15 @@ public class ViewM5 extends JFrame implements ActionListener {
                 }
             }
         });
+    }
+    
+    private void openfile() throws IOException{
+        String excelFilePath = "report_" + orderName + ".xlsx";
+        
+        Desktop desktop = Desktop.getDesktop();
+        File excelFile = new File(excelFilePath);
+        
+        desktop.open(excelFile);
     }
     
 }

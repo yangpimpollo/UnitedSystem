@@ -46,14 +46,14 @@ public class ViewPreload extends JFrame implements Runnable{
     }
     private void update(){
         if(x<=500){
-            x+=2;        // x=100;
+            x+=500;        // x=100;
             y=x/5;
             repaint();
 
             m = (y<=45)? 20 : 255;
             pausa(20);
         }else{
-            pausa(3000);   // 3000
+            pausa(3);   // 3000
             x = -50;
             System.out.println("de nuevo");
             login.setVisible(true);

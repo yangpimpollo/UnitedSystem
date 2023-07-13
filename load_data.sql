@@ -8,10 +8,10 @@ SELECT employee_name FROM Employee WHERE employee_id = 800;
 SELECT * FROM Employee;
 UPDATE Employee SET employee_name='fulano de tal' WHERE employee_id='800'
 
-INSERT INTO Employee (employee_name, job) VALUES ('fulano', 'boss');
-INSERT INTO Employee (employee_name, job) VALUES ('fulano1', 'ceo');
-INSERT INTO Employee (employee_name, job) VALUES ('fulano2', 'manager');
-INSERT INTO Employee (employee_name, job) VALUES ('fulano3', 'rrhh');
+INSERT INTO Employee (employee_name, job) VALUES ('fulano de tal', 'boss');
+INSERT INTO Employee (employee_name, job) VALUES ('ceo_minion', 'ceo');
+INSERT INTO Employee (employee_name, job) VALUES ('manager_minion', 'manager');
+INSERT INTO Employee (employee_name, job) VALUES ('rrhh_minion', 'rrhh');
 INSERT INTO Employee (employee_name, job) VALUES ('sales_minion', 'sales Manager');
 INSERT INTO Employee (employee_name, job) VALUES ('logistics_minion', 'logistics');
 INSERT INTO Employee (employee_name, job) VALUES ('logistics_minion', 'logistics');
@@ -25,23 +25,24 @@ SELECT * FROM DocType;
 INSERT INTO DocType (doc_type) VALUES ('passport');
 INSERT INTO DocType (doc_type) VALUES ('CE');
 INSERT INTO DocType (doc_type) VALUES ('DNI');
+INSERT INTO DocType (doc_type) VALUES ('RUC');
 
-SELECT * FROM Services;
-DELETE FROM Services;
-UPDATE Services SET service_name='Standard D montacargas x h' WHERE service_id='SD8'
+SELECT * FROM AllServices;
+DELETE FROM AllServices;
+UPDATE AllServices SET service_name='Standard D montacargas x h' WHERE service_id='SD8'
 
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SA', 'Standard A Residential', 1800);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SB', 'Standard B Commercial', 5000);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SC', 'Standard C Corporate', 20000);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD1', 'Standard D packaging small', 2);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD2', 'Standard D packaging medium', 4);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD3', 'Standard D packaging big', 8);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD4', 'Standard D camion small x h', 40);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD5', 'Standard D camion medium x h', 60);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD6', 'Standard D camion big x h', 100);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD7', 'Standard D minion x h', 20);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SD8', 'Standard D montacargas x h', 25);
-INSERT INTO Services (service_id, service_name, unit_price) VALUES ('SX', 'Special Service S', 1);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SA', 'Standard A Residential', 1800);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SB', 'Standard B Commercial', 5000);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SC', 'Standard C Corporate', 20000);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD1', 'Standard D packaging small', 2);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD2', 'Standard D packaging medium', 4);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD3', 'Standard D packaging big', 8);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD4', 'Standard D camion small x h', 40);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD5', 'Standard D camion medium x h', 60);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD6', 'Standard D camion big x h', 100);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD7', 'Standard D minion x h', 20);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SD8', 'Standard D montacargas x h', 25);
+INSERT INTO AllServices (service_id, service_name, unit_price) VALUES ('SX', 'Special Service S', 1);
 
 
 SELECT * FROM Accounts;
@@ -72,6 +73,11 @@ EXEC addAccount
           @_user_name = 'fulano',
           @_pass = '1234'
 go;
+
+EXEC addAccount
+          @_id = 810,
+          @_user_name = 'UNI_astucuri',
+          @_pass = '123'
 
 EXEC addAccount
           @_id = 810,
@@ -136,26 +142,34 @@ CREATE PROCEDURE addCustomer
 	@_dat8 VARCHAR(20)
 AS
 	INSERT INTO Customers(customer_id,DocType_doc_type, business_name, first_name, last_name, address, email, phone) 
-	VALUES (CAST(@_dat1 AS INT),@_dat2, @_dat3,@_dat4,@_dat5, @_dat6,@_dat7, @_dat8);
+	VALUES (@_dat1, @_dat2, @_dat3, @_dat4, @_dat5, @_dat6, @_dat7, @_dat8);
 GO;
+
+DROP PROCEDURE [addCustomer];    -- eliminar procedimiento   
+--                          VALUES (CAST(@_dat1 AS INT),@_dat2, @_dat3,@_dat4,@_dat5, @_dat6,@_dat7, @_dat8);
+
+SELECT * 
+  FROM unitedvanlines_SampleDB.INFORMATION_SCHEMA.ROUTINES
+ WHERE ROUTINE_TYPE = 'PROCEDURE'
+
 -----------------------------------
 EXEC addCustomer
-          @_dat1 = '00425689',
-          @_dat2 = 'DNI',
-          @_dat3 = 'fulano ++',
+          @_dat1 = '20606599715',
+          @_dat2 = 'RUC',
+          @_dat3 = 'HELADO EXPRESS S.A.C.',
 		  @_dat4 = '',
 		  @_dat5 = '',
-		  @_dat6 = '',
+		  @_dat6 = 'MZA. B LOTE. 10A URB. VILLA DEL MAR LA LIBERTAD',
 		  @_dat7 = '',
-		  @_dat8 = '900123456'
+		  @_dat8 = '987441924'
 
 ------------------------------------------------------
 
 SELECT * FROM Customers;
 SELECT * FROM Customers WHERE customer_id=425689
-DELETE FROM Customers;
+DELETE FROM Customers WHERE customer_id=20606599715;
 INSERT INTO Customers(customer_id,DocType_doc_type, business_name, first_name, last_name, address, email, phone) 
-VALUES (12345678,'DNI', 'fulano de la torre', 'de la torre', 'fulano', 'Tierra', 'fulano@fulano.com', '987654321');
+VALUES (33003300,'DNI', 'Luis de la torre', 'de la torre', 'Luis', 'Tierra', 'luis@fulano.com', '999888000');
 
 ALTER TABLE Customers DROP CONSTRAINT PK__Customer__CD65CB858606C682;
 ALTER TABLE Customers ALTER COLUMN customer_id bigint NOT NULL ADD PRIMARY KEY (customer_id);
@@ -189,7 +203,7 @@ SELECT * FROM Employee;
 SELECT * FROM Inventory;
 SELECT * FROM OrderDetails;
 SELECT * FROM Orders;
-SELECT * FROM Services;
+SELECT * FROM AllServices;
 
 DROP TABLE Accounts;
 DROP TABLE Customers;
@@ -199,4 +213,4 @@ DROP TABLE Inventory;
 DROP TABLE OrdeDetails;
 
 DROP TABLE Orders;
-DROP TABLE Services;
+DROP TABLE AllServices;

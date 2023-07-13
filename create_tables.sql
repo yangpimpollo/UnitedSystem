@@ -1,7 +1,7 @@
 
 
 
-CREATE TABLE [Services](
+CREATE TABLE [AllServices](
   service_id varchar(3) NOT NULL PRIMARY KEY,
   service_name varchar(40),
   unit_price money,
@@ -13,14 +13,14 @@ CREATE TABLE [OrderDetails](
   quantity int,
   discount float,
   [Orders_order_id] int NOT NULL,
-  [Services_service_id] varchar(3) NOT NULL
+  [AllServices_service_id] varchar(3) NOT NULL
 )
 GO
 
 CREATE TABLE [Orders](
   order_id int IDENTITY(10000000,1) NOT NULL PRIMARY KEY,
   [Employee_employee_id] int NOT NULL,
-  [Customers_customer_id] int NOT NULL,
+  [Customers_customer_id] varchar(15) NOT NULL,
   [date] date NOT NULL,
 )
 GO
@@ -40,7 +40,7 @@ CREATE TABLE [Accounts](
 GO
 
 CREATE TABLE [Customers](
-  customer_id int NOT NULL PRIMARY KEY,
+  customer_id varchar(15) NOT NULL PRIMARY KEY,
   [DocType_doc_type] varchar(10) NOT NULL,
   business_name varchar(40),
   first_name varchar(20),
@@ -95,6 +95,6 @@ ALTER TABLE [Inventory]
 GO
 
 ALTER TABLE [OrderDetails]
-  ADD CONSTRAINT [OrderDetails_Services_service_id_fkey]
-    FOREIGN KEY ([Services_service_id]) REFERENCES [Services] (service_id)
+  ADD CONSTRAINT [OrderDetails_AllServices_service_id_fkey]
+    FOREIGN KEY ([AllServices_service_id]) REFERENCES [AllServices] (service_id)
 GO

@@ -214,3 +214,32 @@ DROP TABLE OrdeDetails;
 
 DROP TABLE Orders;
 DROP TABLE AllServices;
+
+
+
+--------------------------------------------------------------------------------------
+
+SELECT * FROM AllServices WHERE service_name  LIKE '%D cam%'
+
+SELECT O.*, C.business_name FROM Orders as O, Customers as C WHERE O.Customers_customer_id=C.customer_id and date='2023-07-15'
+
+SELECT O.order_id, C.business_name FROM Orders as O, Customers as C WHERE O.Customers_customer_id=C.customer_id and date='2023-07-15'
+
+GO;
+-----------------------------------------------------------------------------------------
+
+CREATE PROCEDURE addItem
+    @_dat0 VARCHAR(100), 
+    @_dat1 VARCHAR(100), 
+    @_dat2 VARCHAR(100), 
+	@_dat3 VARCHAR(100)
+AS
+	INSERT INTO Inventory(Orders_order_id, category, object, details) 
+	VALUES (@_dat0, @_dat1, @_dat2, @_dat3)
+GO;
+
+INSERT INTO Inventory(Orders_order_id, category, object, details) VALUES ('10000000', 'abitacion1', 'lampara', 'delicado')
+
+EXEC addItem @_dat0 = '10000000',  @_dat1 = 'cocina', @_dat2 = 'horno', @_dat3 = 'fragil'
+
+SELECT * FROM Orders WHERE order_id ='10000000'

@@ -148,11 +148,13 @@ public class ViewM1 extends JFrame implements ActionListener {
         tableModel2.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent e) {
-                if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.UPDATE || e.getType() == TableModelEvent.DELETE) {
-                    //System.out.println("Elemento seleccionado: " + selectedValue);
-                    changeTable2();
-                    
+                if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.DELETE) {
+                    addDelTable2();    
                 }
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    updateTable2();
+                }
+                
             }
         });
     }
@@ -185,7 +187,7 @@ public class ViewM1 extends JFrame implements ActionListener {
         }
     }
     
-    public void changeTable2(){
+    public void addDelTable2(){
         double totalSum = 0.0;
         for (int row = 0; row < tableModel2.getRowCount(); row++) {
             
@@ -201,17 +203,31 @@ public class ViewM1 extends JFrame implements ActionListener {
 //                System.out.println("El tipo del dato es desconocido");
 //            }
             
-            //System.out.println("row1 tip" + selectedValue);
-            
-            //int cantidad = (int) tableModel2.getValueAt(row, 1);
             int cantidad = Integer.parseInt((String) tableModel2.getValueAt(row, 1));
             double preciounitario = Double.parseDouble((String) tableModel2.getValueAt(row, 2));
             double descuento = Double.parseDouble((String) tableModel2.getValueAt(row, 3));
+            double total = Double.parseDouble((String) tableModel2.getValueAt(row, 4));
+            
+            //double total = cantidad * preciounitario * (1 - descuento);
 
-            double total = cantidad * preciounitario * (1 - descuento);
+
+            totalSum += total;
+
+        }
+        String text = "S/. " + totalSum;
+        lb1.setText(text);
+    }
+    
+    public void updateTable2(){
+        double totalSum = 0.0;
+        for (int row = 0; row < tableModel2.getRowCount(); row++) {
+            int cantidad = Integer.parseInt((String) tableModel2.getValueAt(row, 1));
+            double preciounitario = Double.parseDouble((String) tableModel2.getValueAt(row, 2));
+            double descuento = Double.parseDouble((String) tableModel2.getValueAt(row, 3));
+            
+            double total = cantidad * preciounitario * (1 - (descuento/100));
             String newTotal = String.valueOf(total);
             //tableModel2.setValueAt(newTotal, row, 4);
-
             totalSum += total;
 
         }

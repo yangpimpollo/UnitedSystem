@@ -75,13 +75,13 @@ EXEC addAccount
 go;
 
 EXEC addAccount
-          @_id = 810,
-          @_user_name = 'UNI_astucuri',
+          @_id = 809,
+          @_user_name = 'astucuri',
           @_pass = '123'
 
 EXEC addAccount
           @_id = 810,
-          @_user_name = 'UNI_tapia',
+          @_user_name = 'tapia',
           @_pass = '123'
 
 ------------------------------------------------------
@@ -243,3 +243,5 @@ INSERT INTO Inventory(Orders_order_id, category, object, details) VALUES ('10000
 EXEC addItem @_dat0 = '10000000',  @_dat1 = 'cocina', @_dat2 = 'horno', @_dat3 = 'fragil'
 
 SELECT * FROM Orders WHERE order_id ='10000000'
+
+DELETE FROM Accounts WHERE Employee_employee_id=810 ;

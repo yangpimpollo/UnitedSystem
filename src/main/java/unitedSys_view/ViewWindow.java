@@ -34,6 +34,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         this.seccionNamet=arg1; 
         seccionName.setText(seccionNamet);
         vm3.setSeccion(arg0, arg1);
+        welcom1.setText("Hello " + seccionNamet);
     };
     
     private JMenuBar mb;
@@ -47,6 +48,18 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
     private ViewM5 vm5 = new ViewM5();
     private ViewM6 vm6 = new ViewM6();
     
+    private JLabel welcom1, welcom2, welcom3;
+    
+    private JLabel imageLabel;
+    private Timer timer;
+    private int currentIndex;
+    private String[] imagePaths = {
+            "res/image1.png",
+            "res/image2.png",
+            "res/image3.png",
+            "res/image4.png"
+    };
+    
     public void setVisibleM2(){ vm2.setVisible(true); };
     public ViewM2 getVM2(){ return vm2; };
     
@@ -59,7 +72,7 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         setTitle("UnitedVanLines");
         setSize(900,600);
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color( 255, 255, 255)); 
+        getContentPane().setBackground(new Color( 255, 255, 255));         
         
         ImageIcon favicon = new ImageIcon("res/icon.png");
         setIconImage(favicon.getImage());
@@ -98,7 +111,53 @@ public class ViewWindow  extends JFrame implements ActionListener,  MouseListene
         seccionName.setBounds(700,10,360,40);
         seccionName.setFont(new Font("Arial Black", Font.BOLD, 23));
         seccionName.setForeground(new Color( 0, 90, 171));
-        add(seccionName);
+        //add(seccionName);
+        
+        //--------------------------------------------------------
+        welcom1 = new JLabel();
+        welcom1.setText("Hello " + seccionNamet);
+        welcom1.setBounds(80,70,400,40);
+        welcom1.setFont(new Font("Arial Black", Font.BOLD, 23));
+        welcom1.setForeground(new Color( 0, 90, 171));
+        add(welcom1);
+        
+        welcom2 = new JLabel();
+        welcom2.setText("que hay de nuevo ?");
+        welcom2.setBounds(50,120,550,45);
+        welcom2.setFont(new Font("Arial Black", Font.BOLD, 38));
+        welcom2.setForeground(new Color( 4, 4, 61));
+        add(welcom2);
+        
+        welcom3 = new JLabel();
+        welcom3.setText("que tenga una buena jornada !");
+        welcom3.setBounds(80,160,400,40);
+        welcom3.setFont(new Font("Arial Black", Font.BOLD, 15));
+        welcom3.setForeground(new Color( 80, 80, 110));
+        add(welcom3);
+        //---------------------------------------------------------
+        
+        imageLabel = new JLabel();
+        imageLabel.setBounds(40, 250, 800, 250);
+        //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(imageLabel);//, BorderLayout.CENTER);
+
+        currentIndex = 0;
+        showImage();
+
+        timer = new Timer(4000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentIndex = (currentIndex + 1) % imagePaths.length;
+                showImage();
+            }
+        });
+        timer.start();
+    }
+    
+    private void showImage() {
+        ImageIcon imageIcon = new ImageIcon(imagePaths[currentIndex]);
+        Image image = imageIcon.getImage().getScaledInstance(800, 250, Image.SCALE_DEFAULT);
+        imageLabel.setIcon(new ImageIcon(image));
     }
     
     public void actionPerformed(ActionEvent e) {
